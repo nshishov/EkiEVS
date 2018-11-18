@@ -560,11 +560,11 @@ namespace EkiEVS
 									writer.Write(i + 1);
 									writer.Write(") ");
 
-									// Adding defenitions
+									// Adding definitions
 									
 									if (tg.dg != null)
 									{
-										if (WriteDefenition(writer, tg.dg))
+										if (WriteDefinition(writer, tg.dg))
 											writer.Write(" ");
 									}
 
@@ -573,7 +573,7 @@ namespace EkiEVS
 
 									if (tg.dg != null)
 									{
-										if (WriteDefenitionGroup(writer, tg.dg))
+										if (WriteDefinitionGroup(writer, tg.dg))
 											writer.Write(' ');
 									}
 
@@ -841,7 +841,7 @@ namespace EkiEVS
 			}
 		}
 
-		private static bool WriteDefenition(StreamWriter writer, Schema.dg[] definitions)
+		private static bool WriteDefinition(StreamWriter writer, Schema.dg[] definitions)
 		{
 			bool added = false;
 			bool appendComma = false;
@@ -901,13 +901,13 @@ namespace EkiEVS
 			writer.Write("[/p]");
 		}
 
-		private static bool WriteDefenitionGroup(StreamWriter writer, Schema.dg[] defenitionGroups)
+		private static bool WriteDefinitionGroup(StreamWriter writer, Schema.dg[] definitionGroups)
 		{
 			const string comma = "; ";
 			bool added = false;
 			bool appendComma = false;
 			
-			foreach (Schema.dg dg in defenitionGroups)
+			foreach (Schema.dg dg in definitionGroups)
 			{
 				if (dg.v != null)
 				{
