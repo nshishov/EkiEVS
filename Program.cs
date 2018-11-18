@@ -213,15 +213,8 @@ namespace EkiEVS
 					if (!String.IsNullOrEmpty(cardHeadword))
 					{
 						writer.Write(' ');
-
-						// Write word without "_"
-
-						int underscorePos = cardHeadword.IndexOf('_');
-
-						if (underscorePos > 0)
-							cardHeadword = cardHeadword.Substring(0, underscorePos);
-
-						WriteEscaped(writer, cardHeadword);
+						
+						WriteEscaped(writer, FixHeadword(cardHeadword));
 					}
 					
 					// Need new line even if WritePartOfSpeech haven't write anything
@@ -239,7 +232,7 @@ namespace EkiEVS
 				if (String.IsNullOrEmpty(cardHeadword))
 					Console.WriteLine($"Can't get headword for card {headword}");
 				else
-					writer.WriteLine(EscapeCardHeadword(cardHeadword));
+					writer.WriteLine(EscapeCardHeadword(FixHeadword(cardHeadword)));
 
 				WritePartOfSpeech(writer, card, "\t", writer.NewLine);
 				WriteCard(writer, card);
@@ -248,6 +241,24 @@ namespace EkiEVS
 			writer.WriteLine();
 		}
 		
+		/// <summary>
+		/// Fixes headword
+		/// </summary>
+		/// <param name="headword">Word to fix</param>
+		/// <returns>Fixed word</returns>
+		private static string FixHeadword(string headword)
+		{
+			int underscorePos = headword.IndexOf('_');
+
+			if (underscorePos > 0)
+				headword = headword.Substring(0, underscorePos);
+
+			headword = headword.Replace(" %v ", " ~ ");
+			headword = headword.Replace("|", "");
+
+			return headword;
+		}
+
 		private static string ClearHeadword(string headword)
 		{
 			headword = headword.Replace(" %v ", " ~ ");
@@ -327,10 +338,13 @@ namespace EkiEVS
 			}
 		}
 
+		/// <summary>
+		/// Escapes headword so it cold be used as card headword
+		/// </summary>
+		/// <param name="headword">Word to escape</param>
+		/// <returns>Escaped word</returns>
 		private static string EscapeCardHeadword(string headword)
 		{
-			headword = headword.Replace(" %v ", " ~ ");
-
 			StringBuilder escaped = new StringBuilder(headword.Length);
 
 			bool stop = false;
@@ -352,6 +366,7 @@ namespace EkiEVS
 
 						break;
 					case '|':
+						break;
 					case '+':
 						if (waitClose)
 						{
@@ -758,8 +773,7 @@ namespace EkiEVS
 							appendComma = true;
 						
 						WriteSubCardHeadword(writer, headword.Trim());
-						//writer.Write(EscapeCardHeadword(headword.Trim()));
-
+						
 						headerAdded = true;
 					}
 

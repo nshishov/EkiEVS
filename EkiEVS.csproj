@@ -53,7 +53,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\annotation.ann" />
-    <None Include="schema_evs_evs_tyybid.test.cs" />
     <Compile Include="Sortable.cs" />
   </ItemGroup>
   <ItemGroup>
