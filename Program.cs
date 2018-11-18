@@ -865,7 +865,7 @@ namespace EkiEVS
 
 					if (writeOpenTag)
 					{
-						writer.Write("[com]([i]");
+						writer.Write("[com][lang name=\"Estonian\"]([i]");
 						writeOpenTag = false;
 						writeCloseTag = true;
 					}
@@ -879,7 +879,7 @@ namespace EkiEVS
 			}
 
 			if (writeCloseTag)
-				writer.Write("[/i])[/com]");
+				writer.Write("[/i])[/lang][/com]");
 
 			return added;
 		}
