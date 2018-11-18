@@ -869,8 +869,10 @@ namespace EkiEVS
 						writeOpenTag = false;
 						writeCloseTag = true;
 					}
-					
-					WriteEscaped(writer, d.Value);
+
+					string value = d.Value.Replace(" %v ", " ~ ");
+
+					WriteEscaped(writer, value);
 					
 					added = true;
 				}
