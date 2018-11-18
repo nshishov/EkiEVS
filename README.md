@@ -2,13 +2,13 @@
 
 Tool to convert Estonian - Russian xml dictionoary avalable on [eki.ee](https://www.eki.ee/litsents/) to dsl file for Lingvo.
 
-Программа для конвертирования Эстонског - Русского xml словаря доступного на [eki.ee](https://www.eki.ee/litsents/) в dsl файл для Lingvo.
+Программа для конвертирования Эстонско - Русского xml словаря доступного на [eki.ee](https://www.eki.ee/litsents/) в dsl файл для Lingvo.
 
 ## How to?
 
 Download xml file and pass path to it as first argument to app.
 
-Скачайте xml файл и запустите программу с указав путь к файлу первым аргументом.
+Скачайте xml файл и запустите программу указав путь к файлу первым аргументом.
 
 ```
 D:\EkiEVS>EkiEVS.exe D:\Temp\evs\evs_EKI_CCBY40.xml
