@@ -1,6 +1,6 @@
 # EkiEVS
 
-Tool to convert Estonian - Russian xml dictionary avalable on [eki.ee](https://www.eki.ee/litsents/) to dsl file for Lingvo.
+Tool to convert Estonian - Russian xml dictionary available on [eki.ee](https://www.eki.ee/litsents/) to dsl file for Lingvo.
 
 Программа для конвертирования Эстонско - Русского xml словаря доступного на [eki.ee](https://www.eki.ee/litsents/) в dsl файл для Lingvo.
 
