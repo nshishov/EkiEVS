@@ -514,6 +514,7 @@ namespace EkiEVS
 						if (writeOpenTag)
 						{
 							writer.Write("\t[m1]");
+							writeOpenTag = false;
 							writeCloseTag = true;
 						}
 
@@ -522,9 +523,24 @@ namespace EkiEVS
 						else
 							appendComma = true;
 
-						writer.Write("<<");
-						writer.Write(ClearHeadword(tvt.Value));
-						writer.Write(">>");
+						// Sometimes there are two words delimited by comma
+
+						string[] headwords = tvt.Value.Split(',');
+
+						bool appendCommaHeadwords = false;
+
+
+						foreach (string headword in headwords)
+						{
+							if (appendCommaHeadwords)
+								writer.Write(", ");
+							else
+								appendCommaHeadwords = true;
+							
+							writer.Write("<<");
+							writer.Write(ClearHeadword(headword));
+							writer.Write(">>");
+						}
 					}
 
 					if (writeCloseTag)
