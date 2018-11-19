@@ -974,7 +974,7 @@ namespace EkiEVS
 
 		private static void WriteDslHeader(StreamWriter writer)
 		{
-			writer.WriteLine("#NAME \"Эстонско-Русский словарь (Et-Ru)\"");
+			writer.WriteLine("#NAME \"Эстонско-Русский словарь EKI (Et-Ru)\"");
 			writer.WriteLine("#INDEX_LANGUAGE \"Estonian\"");
 			writer.WriteLine("#CONTENTS_LANGUAGE \"Russian\"");
 			writer.WriteLine();
