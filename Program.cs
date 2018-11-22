@@ -985,7 +985,44 @@ namespace EkiEVS
 		{
 			forms = forms.Replace("_&_", " & ");
 
-			WriteEscaped(writer, forms);
+			bool endColor = false;
+			bool endStress = false;
+
+			foreach (char ch in forms)
+			{
+				switch (ch)
+				{
+					case '\'':
+						writer.Write("[']");
+						endStress = true;
+						continue;
+					case '[':
+						endColor = true;
+						writer.Write("[c olive]");
+						break;
+					case ' ':
+						if (endColor)
+						{
+							writer.Write("[/c]");
+							endColor = false;
+						}
+
+						WriteEscaped(writer, ch);
+						break;
+					default:
+						WriteEscaped(writer, ch);
+						break;
+				}
+
+				if (endStress)
+				{
+					writer.Write("[/']");
+					endStress = false;
+				}
+			}
+
+			if (endColor)
+				writer.Write("[/c]");
 		}
 
 		private static void WriteExample(StreamWriter writer, string example)
