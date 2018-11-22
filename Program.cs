@@ -993,6 +993,9 @@ namespace EkiEVS
 				switch (ch)
 				{
 					case '\'':
+						// skip
+						break;
+					case '`':
 						writer.Write("[']");
 						endStress = true;
 						continue;
