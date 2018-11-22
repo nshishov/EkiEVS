@@ -1021,6 +1021,9 @@ namespace EkiEVS
 				}
 			}
 
+			if (endStress)
+				writer.Write("[/']");
+
 			if (endColor)
 				writer.Write("[/c]");
 		}
