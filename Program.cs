@@ -1004,6 +1004,7 @@ namespace EkiEVS
 						writer.Write("[c olive]");
 						break;
 					case ' ':
+					case ',':
 						if (endColor)
 						{
 							writer.Write("[/c]");
@@ -1033,6 +1034,8 @@ namespace EkiEVS
 
 		private static void WriteExample(StreamWriter writer, string example)
 		{
+			example = example.Trim();
+
 			for (int i = 0; i < example.Length; ++i)
 			{
 				char ch = example[i];
@@ -1054,6 +1057,9 @@ namespace EkiEVS
 
 		private static void WriteTranslation(StreamWriter writer, string translation)
 		{
+			translation = translation.Replace("[*]", "");
+			translation = translation.Trim();
+
 			for (int i = 0; i < translation.Length; ++i)
 			{
 				char ch = translation[i];
